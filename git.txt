@@ -1,0 +1,207 @@
+git --version //git version
+
+git config --global user.name "yash" // optinal
+git config user.name // yash
+
+
+pwd - linux // current working dir
+cd - windows // current working dir
+
+mkdir myproject // create folder myproject	
+
+git init 
+Initialized empty Git repository in /Users/user/myproject/.git/
+
+Git now knows that it should watch the folder you initiated it on.
+Git creates a hidden folder to keep track of changes.
+
+dir /a:h
+hidden files
+views -> show hidden files
+
+
+git add index.html
+// add files to staged area
+
+git rm --cached fileName
+// remove file from unstaged area
+
+git add --all
+// all files added to unstaged area
+
+git reset 
+// removed all files from staged to unstage
+
+git add -A // short hand of git add --all
+
+git commit -m "first commit"
+
+unstaged to stage by commit 
+
+git log
+// you can check logs
+
+git branch UAT
+// create new branch
+
+git checkout UAT
+// switch to UAT branch
+
+git checkout -b emergency-fix
+// create new branch in work to fix issues and switch directly to this branch
+
+
+to merge
+1) ensure you created new branch where you can add all this files
+2) after that made changes in index.html and add and commit this file
+3) change branch from other to master and try to merge 
+4) it will give you conflict you can check using git status
+5) if you open file you can clearly seen changes that are made from other branch
+6) <<<<<<< HEAD
+// Your changes
+=======
+// Changes from the other branch
+>>>>>>> other-branch-name
+
+7) one part to resolve conflit is you can git status and add and commit file else remove changes from ==== and try again add and commit and merge
+
+git checkout master
+git merge hello-world-images
+
+git status
+On branch master
+You have unmerged paths.
+  (fix conflicts and run "git commit")
+  (use "git merge --abort" to abort the merge)
+
+Changes to be committed:
+        new file:   img_hello_git.jpg
+        new file:   img_hello_world.jpg
+
+Unmerged paths:
+  (use "git add ..." to mark resolution)
+        both modified:   index.html
+
+ here need to resolve conflicts from this file and then add and commit
+
+git branch -d emergency-fix
+
+
+playing with git hub
+1) login git hub account and create a repo public 
+2) copy url and add git remote add origin https://github.com/yjagdale388/hello-world.git 
+3) git remote add origin URL specifies that you are adding a remote repository, with the specified URL, as an origin to your local Git repo.
+4) Now we are going to push our master branch to the origin url, and set it as the default remote branch:
+5) git push --set-upstream origin master  // push master to gihub
+Enumerating objects: 22, done.
+Counting objects: 100% (22/22), done.
+Delta compression using up to 16 threads
+Compressing objects: 100% (22/22), done.
+Writing objects: 100% (22/22), 92.96 KiB | 23.24 MiB/s, done.
+Total 22 (delta 11), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (11/11), done.
+To https://github.com/w3schools-test/hello-world.git
+ * [new branch]      master -> master
+Branch 'master' set up to track remote branch 'master' from 'origin'.
+
+
+-- to pull from github
+fetch , merge , pull
+fetch : pull from github to local repository
+git fetch origin
+
+	 	
+git log origin/master
+you can check changes done from git to local repo
+
+
+able to view diff in both files local and github
+C:\Users\yash\Desktop\myproject>git diff origin/master
+diff --git a/index.html b/index.html
+index 60d8e9f..d7834dc 100644
+--- a/index.html
++++ b/index.html
+@@ -3,4 +3,5 @@
+ <<<<<<< HEAD
+ hiii
+ byye
+-hii
++
++
+
+
+
+C:\Users\yash\Desktop\myproject>git merge origin/master
+Updating 3545a88..cacdea1
+Fast-forward
+ index.html | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+it will refelect changes from github to local git repo
+
+
+But what if you just want to update your local repository, without going through all those steps?
+pull is a combination of fetch and merge. It is used to pull all changes from a remote repository into the branch you are working on.
+
+
+git branch -r // show branches from github only which are fetch
+git fetch you can able to see new branches which are created on git
+
+
+git branch -a // show all branches which are available on github and also show active branch
+
+to do pull 
+switch to remote repo
+git checkout html-skeleton
+and then do git pull
+
+
+Let's try to create a new local branch, and push that to GitHub.
+
+Start by creating a branch, like we did earlier:
+
+git checkout -b update-readme
+
+git status
+On branch update-readme
+Changes not staged for commit:
+  (use "git add ..." to update what will be committed)
+  (use "git restore ..." to discard changes in working directory)
+        modified:   README.md
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+We see that README.md is modified but not added to the Staging Environment:
+git add README.md
+	
+
+Check the status of the branch:
+git status
+On branch update-readme
+Changes to be committed:
+  (use "git restore --staged ..." to unstage)
+        modified:   README.md
+git commit -m "Updated readme for GitHub Branches"
+[update-readme 836e5bf] Updated readme for GitHub Branches
+ 1 file changed, 1 insertion(+)
+
+git push origin update-readme
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 16 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 366 bytes | 366.00 KiB/s, done.
+Total 3 (delta 2), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (2/2), completed with 2 local objects.
+remote:
+remote: Create a pull request for 'update-readme' on GitHub by visiting:
+remote:      https://github.com/w3schools-test/hello-world/pull/new/update-readme
+remote:
+To https://github.com/w3schools-test/hello-world.git
+ * [new branch]      update-readme -> update-readme
+
+
+now local git repo can be available on git
+
+
+
