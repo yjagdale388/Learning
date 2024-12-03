@@ -1,6 +1,7 @@
-git --version //git version
+git --version 
+//git version
 
-git config --global user.name "yash" // optinal
+git config --global user.name "yash" // set global username like who can access
 git config user.name // yash
 
 
@@ -24,10 +25,10 @@ git add index.html
 // add files to staged area
 
 git rm --cached fileName
-// remove file from unstaged area
+// remove file from staged area
 
 git add --all
-// all files added to unstaged area
+// all files added to staged area
 
 git reset 
 // removed all files from staged to unstage
@@ -49,6 +50,7 @@ git checkout UAT
 
 git checkout -b emergency-fix
 // create new branch in work to fix issues and switch directly to this branch
+// create a new branch and all code went to this branch
 
 
 to merge
@@ -87,11 +89,14 @@ Unmerged paths:
 git branch -d emergency-fix
 
 
+________________________________________________________________________________________________
+
 playing with git hub
+___________________________________________
 1) login git hub account and create a repo public 
 2) copy url and add git remote add origin https://github.com/yjagdale388/hello-world.git 
 3) git remote add origin URL specifies that you are adding a remote repository, with the specified URL, as an origin to your local Git repo.
-4) Now we are going to push our master branch to the origin url, and set it as the default remote branch:
+4) Now we are going to push our master branch before that create a master bracnh and then push to the origin url, and set it as the default remote branch:
 5) git push --set-upstream origin master  // push master to gihub
 Enumerating objects: 22, done.
 Counting objects: 100% (22/22), done.
