@@ -16,6 +16,17 @@ Initialized empty Git repository in /Users/user/myproject/.git/
 Git now knows that it should watch the folder you initiated it on.
 Git creates a hidden folder to keep track of changes.
 
+
+git clone // gihub to local repo
+git clone https://github.com/username/repository-name.git
+git clone --branch branch-name https://github.com/username/repository-name.git
+git clone https://github.com/username/repository-name.git my-folder
+This will clone the repository into a folder called my-folder instead of using the default folder name (which is the same as the repository name).
+git clone --depth 1 https://github.com/username/repository-name.git
+
+This will clone the repository with only the latest commit, not the full history, making it faster and using less space.
+
+
 dir /a:h
 hidden files
 views -> show hidden files
@@ -70,6 +81,12 @@ to merge
 git checkout master
 git merge hello-world-images
 
+Merge a Branch
+
+git checkout master  # Ensure you're on the main branch
+git merge hello-world-images
+Explanation: Merges the specified branch into the current branch (e.g., merging hello-world-images into master)
+
 git status
 On branch master
 You have unmerged paths.
@@ -97,7 +114,7 @@ ___________________________________________
 2) copy url and add git remote add origin https://github.com/yjagdale388/hello-world.git 
 3) git remote add origin URL specifies that you are adding a remote repository, with the specified URL, as an origin to your local Git repo.
 4) Now we are going to push our master branch before that create a master bracnh and then push to the origin url, and set it as the default remote branch:
-5) git push --set-upstream origin master  // push master to gihub
+5) git push --set-upstream origin master  // push master to gihub || git push -u <remote><branch>
 Enumerating objects: 22, done.
 Counting objects: 100% (22/22), done.
 Delta compression using up to 16 threads
